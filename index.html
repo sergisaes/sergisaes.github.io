@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sergi Sanmartin — Software Engineer</title>
+<meta name="description" content="Full-stack software engineer. Mobile, back-end, optimization and robotics. CS & Engineering @ UPC Barcelona. HackUPC 2025 winner.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d1017; --surface:#141a22; --surface-2:#1b2431; --border:#26313d;
+  --text:#e8edf2; --muted:#8a97a6; --faint:#5c6773;
+  --accent:#f5a524; --accent-soft:rgba(245,165,36,.14); --accent-line:rgba(245,165,36,.28);
+  --ink:#1a1204;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Inter",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+  --maxw:1080px;
+}
+@media (prefers-color-scheme:light){
+  :root{
+    --bg:#f4f6f5; --surface:#ffffff; --surface-2:#eef1f3; --border:#e0e4e8;
+    --text:#141a22; --muted:#5c6773; --faint:#8a97a6;
+    --accent:#b56c07; --accent-soft:rgba(181,108,7,.10); --accent-line:rgba(181,108,7,.28);
+    --ink:#ffffff;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1017; --surface:#141a22; --surface-2:#1b2431; --border:#26313d;
+  --text:#e8edf2; --muted:#8a97a6; --faint:#5c6773;
+  --accent:#f5a524; --accent-soft:rgba(245,165,36,.14); --accent-line:rgba(245,165,36,.28); --ink:#1a1204;
+}
+:root[data-theme="light"]{
+  --bg:#f4f6f5; --surface:#ffffff; --surface-2:#eef1f3; --border:#e0e4e8;
+  --text:#141a22; --muted:#5c6773; --faint:#8a97a6;
+  --accent:#b56c07; --accent-soft:rgba(181,108,7,.10); --accent-line:rgba(181,108,7,.28); --ink:#ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.65;
+  -webkit-font-smoothing:antialiased;font-size:16.5px;transition:background .3s,color .3s}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+section{padding:88px 0;border-top:1px solid var(--border)}
+a{color:inherit;text-decoration:none}
+
+/* mono eyebrow */
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--accent-line)}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.08;letter-spacing:-.015em}
+h2{font-size:clamp(28px,4vw,40px);font-weight:700;margin-bottom:14px}
+.lead{color:var(--muted);max-width:62ch;font-size:17px}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);
+  backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
+nav.scrolled{border-color:var(--border)}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:26px}
+.mono-logo{font-family:var(--mono);font-weight:700;letter-spacing:.06em;border:1.5px solid var(--accent);
+  color:var(--accent);width:34px;height:34px;display:grid;place-items:center;border-radius:7px;font-size:14px}
+.nav-links{display:flex;gap:22px;margin-left:auto;font-size:14px}
+.nav-links a{color:var(--muted);font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-side{display:flex;gap:6px;align-items:center}
+.icon-btn{width:36px;height:36px;display:grid;place-items:center;border-radius:8px;color:var(--muted);
+  border:1px solid transparent;transition:.2s;cursor:pointer;background:none}
+.icon-btn:hover{color:var(--accent);border-color:var(--border);background:var(--surface)}
+.icon-btn svg{width:18px;height:18px}
+@media(max-width:720px){.nav-links{display:none}}
+
+/* hero */
+.hero{position:relative;padding:150px 0 96px;border-top:none;overflow:hidden}
+#wave{position:absolute;inset:auto 0 0 0;width:100%;height:200px;opacity:.5;pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),
+  linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:44px 44px;
+  opacity:.28;mask-image:radial-gradient(ellipse 80% 60% at 30% 0%,#000,transparent 75%);pointer-events:none}
+.hero-content{position:relative;z-index:2}
+.hero h1{font-size:clamp(40px,7.5vw,78px);font-weight:800;margin:16px 0 22px}
+.hero h1 .amber{color:var(--accent)}
+.hero-thesis{font-size:clamp(18px,2.4vw,22px);color:var(--text);max-width:34ch;font-weight:500;
+  font-family:var(--display)}
+.hero-thesis .m{color:var(--muted)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{font-family:var(--mono);font-size:13.5px;font-weight:500;padding:11px 18px;border-radius:9px;
+  border:1px solid var(--border);color:var(--text);display:inline-flex;align-items:center;gap:9px;
+  transition:.2s;background:var(--surface)}
+.btn:hover{border-color:var(--accent-line);transform:translateY(-2px)}
+.btn.primary{background:var(--accent);color:var(--ink);border-color:var(--accent);font-weight:700}
+.btn.primary:hover{filter:brightness(1.06)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:44px;font-family:var(--mono);
+  font-size:12.5px;color:var(--faint)}
+.hero-meta b{color:var(--muted);font-weight:500}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:52px;align-items:start}
+@media(max-width:760px){.about-grid{grid-template-columns:1fr;gap:32px}}
+.about p{margin-bottom:16px;color:var(--muted)}
+.about p strong{color:var(--text);font-weight:600}
+.facts{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;background:var(--surface)}
+.fact{padding:16px 18px;border-bottom:1px solid var(--border)}
+.fact:last-child{border-bottom:none}
+.fact .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.fact .v{font-weight:600;margin-top:3px}
+.fact .v span{color:var(--muted);font-weight:400}
+
+/* timeline */
+.timeline{display:flex;flex-direction:column;gap:2px}
+.job{display:grid;grid-template-columns:180px 1fr;gap:28px;padding:26px 0;border-top:1px solid var(--border)}
+.job:first-child{border-top:none}
+@media(max-width:680px){.job{grid-template-columns:1fr;gap:8px}}
+.job-when{font-family:var(--mono);font-size:12.5px;color:var(--faint);padding-top:4px}
+.job h3{font-size:20px;font-weight:600}
+.job .org{color:var(--accent);font-weight:600;font-family:var(--mono);font-size:13px;margin:2px 0 10px}
+.job p{color:var(--muted);font-size:15px;margin-bottom:12px}
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tag{font-family:var(--mono);font-size:11.5px;padding:3px 9px;border-radius:6px;background:var(--surface-2);
+  color:var(--muted);border:1px solid var(--border)}
+
+/* projects */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(max-width:760px){.proj-grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;
+  display:flex;flex-direction:column;transition:.22s;position:relative}
+.card:hover{border-color:var(--accent-line);transform:translateY(-3px)}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:12px}
+.card h3{font-size:19px;font-weight:600}
+.card .badge{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--accent);background:var(--accent-soft);padding:4px 8px;border-radius:6px;white-space:nowrap}
+.card p{color:var(--muted);font-size:14.5px;margin-bottom:16px;flex:1}
+.card .tags{margin-bottom:16px}
+.card-links{display:flex;gap:16px;font-family:var(--mono);font-size:12.5px}
+.card-links a{color:var(--muted);display:inline-flex;align-items:center;gap:6px;transition:color .2s}
+.card-links a:hover{color:var(--accent)}
+.card-links svg{width:14px;height:14px}
+
+/* research */
+.paper{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:30px;
+  border-left:3px solid var(--accent)}
+.paper h3{font-size:22px;font-weight:600;margin-bottom:10px}
+.paper .authors{font-family:var(--mono);font-size:13px;color:var(--muted);margin-bottom:6px}
+.paper .authors .me{color:var(--accent);font-weight:700}
+.paper .venue{font-family:var(--mono);font-size:12px;color:var(--faint);margin-bottom:18px}
+.paper .abs{color:var(--muted);font-size:15px;max-width:70ch;margin-bottom:18px}
+
+/* skills */
+.skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:680px){.skill-grid{grid-template-columns:1fr}}
+.skill-block{border:1px solid var(--border);border-radius:12px;padding:20px 22px;background:var(--surface)}
+.skill-block .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:14px}
+
+/* contact */
+.contact{text-align:left}
+.contact h2{font-size:clamp(30px,5vw,46px)}
+.contact .lead{margin-bottom:30px}
+
+footer{border-top:1px solid var(--border);padding:34px 0;color:var(--faint);
+  font-family:var(--mono);font-size:12.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#top" class="mono-logo" aria-label="Home">SS</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#research">Research</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-side">
+      <a class="icon-btn" href="https://github.com/sergisaes" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.2.8-.5v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg></a>
+      <a class="icon-btn" href="https://www.linkedin.com/in/sergisanmartin/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.7-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.2ZM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM7.1 20.4H3.5V9h3.6v11.4ZM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0Z"/></svg></a>
+      <button class="icon-btn" id="theme" aria-label="Toggle theme"><svg id="theme-icon" viewBox="0 0 24 24" fill="currentColor"></svg></button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-grid"></div>
+  <canvas id="wave" aria-hidden="true"></canvas>
+  <div class="wrap hero-content">
+    <div class="eyebrow">Full-stack software engineer · Girona / Barcelona</div>
+    <h1>Sergi <span class="amber">Sanmartin</span></h1>
+    <p class="hero-thesis">I like being handed problems I don't yet know how to solve — <span class="m">and figuring them out fast, across the whole stack.</span></p>
+    <div class="cta-row">
+      <a class="btn primary" href="#projects">View projects</a>
+      <a class="btn" href="mailto:sergisaes@gmail.com">Get in touch</a>
+      <a class="btn" href="cv.pdf" target="_blank" rel="noopener">Download CV ↓</a>
+    </div>
+    <div class="hero-meta">
+      <span><b>Now</b> — Software Engineer @ Amphora</span>
+      <span><b>Studying</b> — CS &amp; Eng. @ UPC</span>
+      <span><b>Award</b> — HackUPC 2025 Winner</span>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">About</div>
+    <div class="about-grid">
+      <div class="about reveal">
+        <h2>End to end, under real constraints.</h2>
+        <p>I'm a final-year Computer Science &amp; Engineering student at <strong>UPC Barcelona</strong>, currently building production mobile apps and Python back-end services at Amphora Logistics.</p>
+        <p>My best work has come from jumping into things I'd never done before and shipping them fast: a warehouse app used by <strong>real drivers</strong>, a production-scheduling <strong>optimizer running on a plant floor</strong>, and an <strong>autonomous-landing controller for a drone</strong>. I move between mobile front-ends, back-end services, and the odd optimization or robotics problem depending on what the week needs.</p>
+        <p>I care about explaining <strong>why</strong> a solution works, not just that it does. I spent an exchange semester at <strong>NTUST (Taipei)</strong> working on robotics, and I keep building side projects because I enjoy it.</p>
+      </div>
+      <div class="facts reveal">
+        <div class="fact"><div class="k">Education</div><div class="v">BSc Computer Science &amp; Engineering<br><span>UPC · graduating 2026</span></div></div>
+        <div class="fact"><div class="k">Exchange</div><div class="v">NTUST, Taipei<br><span>Robotics · 2025–26</span></div></div>
+        <div class="fact"><div class="k">Languages</div><div class="v">Catalan · Spanish <span>(native)</span><br>English</div></div>
+        <div class="fact"><div class="k">Location</div><div class="v">Girona / Barcelona<br><span>Open to relocation</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="eyebrow">Experience</div>
+    <h2 class="reveal">Where I've worked</h2>
+    <div class="timeline" style="margin-top:34px">
+      <div class="job reveal">
+        <div class="job-when">Feb 2026 — Present</div>
+        <div>
+          <h3>Software Engineer</h3>
+          <div class="org">Amphora Logistics</div>
+          <p>Building the company's mobile Warehouse Management System — React Native front-end and Python micro-services on AWS. Shipped a driver app from scratch and a reusable mobile design system to keep the UI consistent and speed up delivery.</p>
+          <div class="tags"><span class="tag">React Native</span><span class="tag">TypeScript</span><span class="tag">Python</span><span class="tag">AWS</span><span class="tag">DynamoDB</span></div>
+        </div>
+      </div>
+      <div class="job reveal">
+        <div class="job-when">Jun — Sep 2025</div>
+        <div>
+          <h3>Software Engineer — Optimization &amp; ERP</h3>
+          <div class="org">ACEBSA</div>
+          <p>Built AI scheduling optimizers (Simulated Annealing and CP-SAT via Google OR-Tools) to improve production planning, modelling real plant constraints as optimization problems. Extended the company's ERP in Oracle PL/SQL and Forms.</p>
+          <div class="tags"><span class="tag">OR-Tools · CP-SAT</span><span class="tag">Simulated Annealing</span><span class="tag">Python</span><span class="tag">Oracle PL/SQL</span></div>
+        </div>
+      </div>
+      <div class="job reveal">
+        <div class="job-when">Oct 2023 — Dec 2024</div>
+        <div>
+          <h3>Teaching Assistant</h3>
+          <div class="org">Aula Lliure · UPC</div>
+          <p>Mentored Computer Engineering students in Introduction to Computers and Computer Structure, running theory and hands-on sessions and designing exercises for different learning styles.</p>
+          <div class="tags"><span class="tag">Teaching</span><span class="tag">C</span><span class="tag">MIPS</span></div>
+        </div>
+      </div>
+      <div class="job reveal">
+        <div class="job-when">Jun — Sep 2023</div>
+        <div>
+          <h3>Web Development Intern</h3>
+          <div class="org">Steema Software</div>
+          <p>Maintained and extended the company's JavaScript charting libraries — bug fixes and small features in a Git/GitHub workflow.</p>
+          <div class="tags"><span class="tag">JavaScript</span><span class="tag">Data viz</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow">Selected projects</div>
+    <h2 class="reveal">Things I've built</h2>
+    <div class="proj-grid" style="margin-top:34px">
+
+      <article class="card reveal">
+        <div class="card-top"><h3>SafeWalk BCN</h3><span class="badge">Live demo</span></div>
+        <p>A women's-safety app built for a Generalitat de Catalunya challenge: safe routing, a real-time community safety map, and an active escort mode with auto-SOS. Monorepo, 104 unit tests, CI.</p>
+        <div class="tags"><span class="tag">Expo · RN</span><span class="tag">TypeScript</span><span class="tag">Firebase</span><span class="tag">Serverless</span></div>
+        <div class="card-links">
+          <a href="https://wayher-556ca.web.app" target="_blank" rel="noopener">↗ Live</a>
+          <a href="https://github.com/sergisaes/WayHer" target="_blank" rel="noopener">Code</a>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-top"><h3>MMG</h3><span class="badge">🏆 HackUPC '25 Winner</span></div>
+        <p>Winning challenge project: blackout-ready Wi-Fi/Bluetooth mesh networking with an app, a server and an admin portal — keeping people connected when the power and network go down.</p>
+        <div class="tags"><span class="tag">React</span><span class="tag">Node</span><span class="tag">Networking</span></div>
+        <div class="card-links"><a href="https://github.com/Fez248/HACKUPC-2025" target="_blank" rel="noopener">Code</a></div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-top"><h3>UAV Landing</h3><span class="badge">Research</span></div>
+        <p>Autonomous drone landing on a moving ship deck: a physics deck-motion model, a GRU residual predictor, and a Mamdani fuzzy supervisor picking interpretable modes (hold / approach / descend / abort).</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">GRU · ONNX</span><span class="tag">MATLAB</span><span class="tag">CoppeliaSim</span></div>
+        <div class="card-links"><a href="#research">Read the paper ↓</a><a href="https://github.com/sergisaes/UAVLanding" target="_blank" rel="noopener">Code</a></div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-top"><h3>HackUPC 2026</h3><span class="badge">IoT</span></div>
+        <p>Real-time incident dashboard with a multi-agent consensus engine and a live Arduino/ESP sensor mesh over WiFi, backed by a FastAPI device registry and router.</p>
+        <div class="tags"><span class="tag">React · Vite</span><span class="tag">FastAPI</span><span class="tag">Arduino / ESP32</span></div>
+        <div class="card-links"><a href="https://github.com/sergisaes/HACKUPC26" target="_blank" rel="noopener">Frontend</a><a href="https://github.com/sergisaes/ServerHackUPC" target="_blank" rel="noopener">Backend</a></div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-top"><h3>Whomp'Em</h3><span class="badge">Game dev</span></div>
+        <p>A 2D action platformer written from scratch in C++ and OpenGL — hand-written rendering, tile levels, bosses, power-ups and FMOD audio. No game engine.</p>
+        <div class="tags"><span class="tag">C++</span><span class="tag">OpenGL · GLSL</span><span class="tag">FMOD</span></div>
+        <div class="card-links"><a href="https://github.com/sergisaes/WhompEmVJ2D" target="_blank" rel="noopener">Code</a></div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-top"><h3>ECSDI Travel Planner</h3><span class="badge">Multi-agent</span></div>
+        <p>A distributed multi-agent system that plans trips end-to-end, with agents negotiating over a shared RDF/OWL ontology using SPARQL on a Jena Fuseki triple store.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">SPARQL</span><span class="tag">Semantic web</span></div>
+        <div class="card-links"><a href="https://github.com/sergisaes/ECSDI" target="_blank" rel="noopener">Code</a></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <div class="eyebrow">Research</div>
+    <h2 class="reveal">Paper submitted to IEEE</h2>
+    <div class="paper reveal" style="margin-top:30px">
+      <h3>Real-Time Hybrid Predictive Fuzzy Control for UAV Landing on Moving Platforms</h3>
+      <div class="authors">Marcel Naderer, <span class="me">Sergi Sanmartin</span>, Gaëtan Soudée, Yu-Chen Liu, Min-Fan Ricky Lee</div>
+      <div class="venue">MCI Innsbruck · UPC Barcelona · ECE Paris · NTUST Taipei — submitted to IEEE</div>
+      <p class="abs">A real-time landing supervisor for multirotor UAVs on moving decks that fuses a physics-based deck-motion model, a GRU residual predictor with a confidence measure, and a Mamdani fuzzy layer producing interpretable behavioural modes — descending only when confidence and clearance are sufficient, even under wind gusts, irregular waves and vision dropouts.</p>
+      <div class="card-links"><a href="https://github.com/sergisaes/UAVLanding" target="_blank" rel="noopener">↗ Code &amp; paper on GitHub</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow">Skills</div>
+    <h2 class="reveal">Toolbox</h2>
+    <div class="skill-grid" style="margin-top:34px">
+      <div class="skill-block reveal"><div class="k">Languages</div><div class="tags"><span class="tag">TypeScript / JS</span><span class="tag">Python</span><span class="tag">C++</span><span class="tag">Java</span><span class="tag">Kotlin</span><span class="tag">C</span><span class="tag">Ruby</span></div></div>
+      <div class="skill-block reveal"><div class="k">Mobile &amp; Front-end</div><div class="tags"><span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">Design systems</span><span class="tag">OpenGL</span><span class="tag">Qt</span></div></div>
+      <div class="skill-block reveal"><div class="k">Back-end &amp; Cloud</div><div class="tags"><span class="tag">Python micro-services</span><span class="tag">FastAPI</span><span class="tag">Django</span><span class="tag">Rails</span><span class="tag">AWS</span><span class="tag">DynamoDB</span><span class="tag">Oracle PL/SQL</span></div></div>
+      <div class="skill-block reveal"><div class="k">AI · Optimization · Robotics</div><div class="tags"><span class="tag">OR-Tools · CP-SAT</span><span class="tag">Simulated Annealing</span><span class="tag">GRU / ONNX</span><span class="tag">Fuzzy control</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="eyebrow">Contact</div>
+    <h2 class="reveal">Let's build something.</h2>
+    <p class="lead reveal">Graduating in 2026 and looking for a role where I can earn responsibility quickly and work across the stack. If that sounds like your team, I'd love to talk.</p>
+    <div class="cta-row reveal">
+      <a class="btn primary" href="mailto:sergisaes@gmail.com">sergisaes@gmail.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/sergisanmartin/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/sergisaes" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%">
+    <span>© 2026 Sergi Sanmartin Soria</span>
+    <span>Built from scratch · Girona / Barcelona</span>
+  </div>
+</footer>
+
+<script>
+// theme toggle
+const root=document.documentElement, tbtn=document.getElementById('theme'), ticon=document.getElementById('theme-icon');
+const SUN='<path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-13v2m0 14v2M4 12H2m20 0h-2M5.6 5.6 4.2 4.2m15.6 15.6-1.4-1.4M18.4 5.6l1.4-1.4M4.2 19.8l1.4-1.4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>';
+const MOON='<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" fill="currentColor"/>';
+function apply(t){root.setAttribute('data-theme',t);ticon.innerHTML=t==='dark'?SUN:MOON;try{localStorage.setItem('theme',t)}catch(e){}}
+const saved=(()=>{try{return localStorage.getItem('theme')}catch(e){return null}})();
+apply(saved||(matchMedia('(prefers-color-scheme:light)').matches?'light':'dark'));
+tbtn.addEventListener('click',()=>apply(root.getAttribute('data-theme')==='dark'?'light':'dark'));
+
+// nav border on scroll
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10),{passive:true});
+
+// reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// hero waveform — a subtle oscilloscope line (deck heave motif)
+const c=document.getElementById('wave'),x=c.getContext('2d');
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+let W,H,t=0;
+function size(){W=c.width=c.offsetWidth*devicePixelRatio;H=c.height=c.offsetHeight*devicePixelRatio}
+size();addEventListener('resize',size);
+function accent(){return getComputedStyle(root).getPropertyValue('--accent').trim()}
+function draw(){
+  x.clearRect(0,0,W,H);
+  const a=accent();
+  for(let layer=0;layer<3;layer++){
+    x.beginPath();
+    const amp=(H/6)*(1-layer*0.28), off=t*(0.6+layer*0.15), freq=1.6+layer*0.5;
+    for(let px=0;px<=W;px+=6){
+      const p=px/W;
+      const y=H*0.62 + Math.sin(p*Math.PI*freq*2+off)*amp*Math.sin(p*Math.PI) + Math.sin(p*Math.PI*8+off*2)*amp*0.12;
+      px===0?x.moveTo(px,y):x.lineTo(px,y);
+    }
+    x.strokeStyle=a;x.globalAlpha=0.5-layer*0.14;x.lineWidth=1.5*devicePixelRatio;x.stroke();
+  }
+  x.globalAlpha=1;
+}
+if(reduce){draw()}else{(function loop(){t+=0.02;draw();requestAnimationFrame(loop)})()}
+</script>
+</body>
+</html>
